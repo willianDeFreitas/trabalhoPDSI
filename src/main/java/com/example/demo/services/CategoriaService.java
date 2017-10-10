@@ -52,8 +52,10 @@ public class CategoriaService {
 		return repo.findAll();
 	}
 
-	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String direction, String sortBy) {
-		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), sortBy);
+	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		//prepara consulta para retorno de dados
+		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		//sobrecarga de metodos e retorno de pagina
 		return repo.findAll(pageRequest);
 	}
 }
