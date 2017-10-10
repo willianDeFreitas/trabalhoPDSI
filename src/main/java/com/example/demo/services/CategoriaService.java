@@ -14,6 +14,8 @@ import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.services.exceptions.DataIntegrityException;
 import com.example.demo.services.exceptions.ObjectNotFoundException;
 
+import dto.CategoriaDTO;
+
 @Service
 public class CategoriaService {
 
@@ -57,5 +59,9 @@ public class CategoriaService {
 		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		//sobrecarga de metodos e retorno de pagina
 		return repo.findAll(pageRequest);
+	}
+	//metodo auxiliar que instacia uma categoria a partir de um DTO
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 }
