@@ -35,7 +35,7 @@ public class ProdutoService {
 		//prepara consulta para retorno de dados
 		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		List<Categoria> categorias = categoriarepository.findAll(ids);
-		return repo.search(nome, categorias, pageRequest);
+		return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);
 		
 	}
 
